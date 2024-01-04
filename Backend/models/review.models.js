@@ -5,13 +5,13 @@ let reviews;
 
 export default class ReviewsModels {
     static async injectDB(conn) {
-        console.log(conn);
+        // console.log(conn);
         if (reviews) {
             return
         }
         try {
             reviews = await conn.db("reviews").collection("reviews")
-            console.log(reviews)
+            // console.log(reviews)
         } catch (e) {
             console.error(`Unable to establish collection handles in userDAO: ${e}`)
         }
