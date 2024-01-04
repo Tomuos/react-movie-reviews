@@ -5,5 +5,7 @@ const router = express.Router();
 
 router.route("/").get((req, res) => res.send("Hello world!"));
 router.route("/new").post(ReviewsController.apiPostReview);
+router.route("/:id")
+    .get(ReviewsController.apiGetReview)    
 
 export default router;

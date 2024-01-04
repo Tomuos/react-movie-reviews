@@ -16,7 +16,7 @@ export default class ReviewsModels {
             console.error(`Unable to establish collection handles in userDAO: ${e}`)
         }
     }
-
+//add review
     static async addReview(movieId, user, review) {
         try {
           const reviewDoc = {
@@ -32,5 +32,15 @@ export default class ReviewsModels {
           return { error: e }
         }
       }
+  //get review
+
+  static async getReviews(reviewId) {
+      try {
+        return await reviews.findOne({ _id: new ObjectId(reviewId) })
+      } catch (e) {
+        console.error(`Unable to get review: ${e}`)
+        return { error: e }
+      } 
+    }
     
 }
