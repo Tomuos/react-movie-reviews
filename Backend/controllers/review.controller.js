@@ -62,5 +62,18 @@ export default class ReviewsController {
         }
       }
 
+      static async apiDeleteReview(req, res, next) {
+        try {
+          const reviewId = req.params.id
+          console.log(reviewId)
+          const reviewResponse = await ReviewsModels.deleteReview(
+            reviewId,
+          )
+          res.json({ status: "success" })
+        } catch (e) {
+          res.status(500).json({ error: e.message })
+        }
+      }
+
     }
 

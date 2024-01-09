@@ -7,6 +7,7 @@ router.route("/").get((req, res) => res.send("Hello world!"));
 router.route("/new").post(ReviewsController.apiPostReview);
 router.route("/:id")
     .get(ReviewsController.apiGetReview) 
-    .put(ReviewsController.apiUpdateReview)   
+    .put(ReviewsController.apiUpdateReview)  
+    .delete(ReviewsController.apiDeleteReview)
 
 export default router;
