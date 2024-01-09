@@ -57,7 +57,7 @@ export default class ReviewsModels {
       return { error: e }
     }
   }
-
+//delete review
   static async deleteReview(reviewId) {
     try {
       const deleteResponse = await reviews.deleteOne({
@@ -70,5 +70,17 @@ export default class ReviewsModels {
       return { error: e }
     }
   }
-    
+
+// get reviews by movie id
+
+    static async getReviewsByMovieId(movieId) {
+      try {
+        const cursor = await reviews.find({ movieId: parseInt(movieId) })
+        return cursor.toArray()
+      } catch (e) {
+        console.error(`Unable to get reviews: ${e}`)
+        return { error: e }
+      }
+
+    }
 }

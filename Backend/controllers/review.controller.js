@@ -75,5 +75,20 @@ export default class ReviewsController {
         }
       }
 
+      static async apiGetReviews(req, res, next) {
+        try {
+          let id = req.params.id || {}
+          let reviews = await ReviewsModels.getReviewsByMovieId(id)
+          if (!reviews) {
+            res.status(404).json({ error: "Not found" })
+            return
+          }
+          res.json(reviews)
+        } catch (e) {
+          console.log(`api, ${e}`)
+          res.status(500).json({ error: e })
+        }
+
     }
+  }
 
