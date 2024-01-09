@@ -33,5 +33,34 @@ export default class ReviewsController {
         }
       }
 
-}
+      static async apiUpdateReview(req, res, next) {
+        try {
+          const reviewId = req.params.id
+          const review = req.body.review
+          const user = req.body.user
+    
+          const reviewResponse = await ReviewsModels.updateReview(
+            reviewId,
+            user,
+            review
+          )
+    
+          var { error } = reviewResponse
+          if (error) {
+            return res.status(400).json({ error })
+          }
+    
+          if (reviewResponse.modifiedCount === 0) {
+            throw new Error(
+              "unable to update review",
+            )
+          }
+    
+          return res.json({ status: "success" })
+        } catch (e) {
+          res.status(500).json({ error: e.message })
+        }
+      }
+
+    }
 

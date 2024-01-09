@@ -42,5 +42,20 @@ export default class ReviewsModels {
         return { error: e }
       } 
     }
+
+  //update review
+  static async updateReview(reviewId, user, review) {
+    try {
+      const updateResponse = await reviews.updateOne(
+        { _id: new ObjectId(reviewId) },
+        { $set: {user: user, review: review } },
+      )
+  
+      return updateResponse
+    } catch (e) {
+      console.error(`Unable to update review: ${e}`)
+      return { error: e }
+    }
+  }
     
 }
