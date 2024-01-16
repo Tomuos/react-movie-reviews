@@ -1,9 +1,9 @@
 // Import the necessary modules and dependencies
-import ReviewsController from 'Backend\controllers\review.controller.js'; // Adjust the path as needed
-import ReviewsModels from 'Backend\models\review.models.js'; // Adjust the path as needed
+import ReviewsController from './controllers/review.controllers.js'; // Adjust the path as needed
+import ReviewsModels from './models/review.models.js'; // Adjust the path as needed
 
 // Mock the ReviewsModels module
-jest.mock('.Backend\models\review.models.js', () => ({
+jest.mock('./models/review.models.js', () => ({
   addReview: jest.fn(),
 }));
 
@@ -17,8 +17,8 @@ const req = {
 };
 
 const res = {
-  json: jest.fn(x),
-  status: jest.fn(x),
+  json: jest.fn(() => {}),
+  status: jest.fn(() => {}),
 };
 
 describe('ReviewsController', () => {
