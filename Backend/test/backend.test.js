@@ -17,8 +17,8 @@ const req = {
 };
 
 const res = {
-  json: jest.fn(() => {}),
-  status: jest.fn(() => {}),
+  json: jest.fn(),
+  status: jest.fn().mockReturnThis(),
 };
 
 describe('ReviewsController', () => {
