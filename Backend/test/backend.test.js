@@ -1,34 +1,61 @@
-// const {MongoClient} = require('mongodb');
-import mongodb from "mongodb";
-import dotenv from "dotenv";
-dotenv.config();
+// Import the necessary modules and dependencies
+import ReviewsController from 'Backend\controllers\review.controller.js'; // Adjust the path as needed
+import ReviewsModels from 'Backend\models\review.models.js'; // Adjust the path as needed
 
-const MongoClient = mongodb.MongoClient;
+// Mock the ReviewsModels module
+jest.mock('.Backend\models\review.models.js', () => ({
+  addReview: jest.fn(),
+}));
 
-describe('insert', () => {
-  let connection;
-  let db;
+// Sample Express req and res objects
+const req = {
+  body: {
+    movieId: '123',
+    user: 'testuser',
+    review: 'A great movie!',
+  },
+};
 
-  beforeAll(async () => {
-    connection = await MongoClient.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+const res = {
+  json: jest.fn(x),
+  status: jest.fn(x),
+};
+
+describe('ReviewsController', () => {
+  describe('apiPostReview', () => {
+    afterEach(() => {
+      // Clear mock calls after each test
+      jest.clearAllMocks();
     });
-    db = await connection.db("reviews");
-  });
 
-  afterAll(async () => {
-    await connection.close();
-  });
+    it('should handle successful review posting', async () => {
+      // Mock successful review posting
+      ReviewsModels.addReview.mockResolvedValueOnce({
+        insertedCount: 1,
+        ops: [{
+          movieId: '123',
+          user: 'testuser',
+          review: 'A great movie!',
+        }],
+      });
 
-  it('should insert a doc into collection', async () => {
-    const reviews = db.collection('reviews');
+      await ReviewsController.apiPostReview(req, res);
 
-    const mockReview = {movieId: '12544', user: 'John', review: 'Great film!'};
-    await reviews.insertOne(mockUser);
+      // Perform assertions
+      expect(res.json).toHaveBeenCalledWith({ status: 'success' });
+      expect(res.status).not.toHaveBeenCalled();
+    });
 
-    const insertedReview = await reviews.findOne({_id: new ObjectId(mockReview._id)});
-    expect(insertedReview).toEqual(mockReview);
+    it('should handle error during review posting', async () => {
+      // Mock error during review posting
+      const errorMessage = 'Some error occurred';
+      ReviewsModels.addReview.mockRejectedValueOnce(new Error(errorMessage));
+
+      await ReviewsController.apiPostReview(req, res);
+
+      // Perform assertions
+      expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.json).toHaveBeenCalledWith({ error: errorMessage });
+    });
   });
 });
-
