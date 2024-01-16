@@ -5,12 +5,13 @@ import ReviewsModels from '../../models/review.models.js'; // Adjust the path as
 // Mock the ReviewsModels module
 jest.mock('../../models/review.models.js', () => ({
     getReviews: jest.fn(),
-    status: jest.fn().mockReturnThis(),
+    
   }));
   
   // Sample Express req and res objects
   const req = {
     body: {
+      id: '123',
       movieId: '123',
       user: 'testuser',
       review: 'A great movie!',
@@ -32,21 +33,23 @@ jest.mock('../../models/review.models.js', () => ({
 
         it('should handle successful review getting', async () => {
             // Mock successful review getting
-            ReviewsModels.getReviews(req.body._id).mockResolvedValueOnce({
-            insertedCount: 1,
-            ops: [{
-                movieId: '123',
-                user: 'testuser',
-                review: 'A great movie!',
-                _id: "12345"
-            }],
+            ReviewsModels.getReviews.mockResolvedValueOnce({
+              id: "123",
+              movieId: '123',
+              user: 'testuser',
+              review: 'A great movie!'
             });
         
             await ReviewsController.apiGetReview(req, res);         
 
         // Perform assertions
-        expect(res.json).toHaveBeenCalledWith({status: 'success'});
-        expect(res.status).not.toHaveBeenCalled();
+        
+        expect(res.json).toHaveBeenCalledWith({
+          id: "123",
+          movieId: '123',
+          user: 'testuser',
+          review: 'A great movie!'
+        });
     });
         it('should handle error during review getting', async () => {
             // Mock error during review getting
