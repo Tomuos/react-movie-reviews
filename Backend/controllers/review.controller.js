@@ -77,6 +77,8 @@ export default class ReviewsController {
 
       static async apiGetReviews(req, res, next) {
         try {
+          console.log('this is the req from the function')
+          console.log(req)
           let id = req.params.id || {}
           let reviews = await ReviewsModels.getReviewsByMovieId(id)
           if (!reviews) {
