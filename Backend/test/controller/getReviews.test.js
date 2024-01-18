@@ -20,7 +20,14 @@ jest.mock('../../models/review.models.js', () => ({
   // };
 
 
-  let req = {params: {id: '123'}} 
+  let req = {
+        params: {id: '123'},
+        body: {
+          movieId: '54356',
+          user: 'testuser',
+          review: 'A great movie!',
+        }
+      } 
   
   const res = {
     json: jest.fn(),
@@ -36,21 +43,29 @@ jest.mock('../../models/review.models.js', () => ({
 
         it.only('should handle successful review getting', async () => {
             // Mock successful review getting
-            ReviewsModels.getReviews.mockResolvedValueOnce({
-             
-              params: {id: '123'}
-            });
-        
-           const result =  await ReviewsController.apiGetReview(req, res);        
-           console.log(result) 
-
+            // ReviewsModels.getReviews.mockResolvedValueOnce({        
+            //   params: {id: '123'}
+            // });       
         // Perform assertions
-        expect(1).toBe(1)
-        // expect(res.json).toHaveBeenCalledWith({
-        //   id: "123",
-        //   
-        // });
+        expect(req.params.id).toBe("123")
     });
+
+    it.only("should get the correct movieId", async() => {
+      // Mock successful review getting
+      // ReviewsModels.getReviews.mockResolvedValueOnce({
+      //   body: {movieId: '54356'}
+      // })
+      expect(req.body.movieId).toBe("54356")
+    })
+
+    it.only("should contain the user", async() => {
+      // Mock successful review getting
+      // ReviewsModels.getReviews.mockResolvedValueOnce({
+      //   body: {user: 'testuser'}
+      // })
+      expect(req.body.user).toBe("testuser")
+      expect(req.body.review).toContain("!")
+    })
         // it('should handle error during review getting', async () => {
         //     // Mock error during review getting
         //     const errorMessage = 'Some error occurred';
