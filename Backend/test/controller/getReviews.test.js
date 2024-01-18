@@ -48,9 +48,7 @@ jest.mock('../../models/review.models.js', () => ({
         expect(1).toBe(1)
         // expect(res.json).toHaveBeenCalledWith({
         //   id: "123",
-        //   movieId: '123',
-        //   user: 'testuser',
-        //   review: 'A great movie!'
+        //   
         // });
     });
         // it('should handle error during review getting', async () => {
