@@ -1,9 +1,13 @@
 import "./Card.css";
 
-function Card() {
+function Card({id, title, description, image, rating, releaseDate}) {
   return (
-    <div className="card">
-      <h1>Card</h1>
+    <div key={id} className="card">
+      <header>{title}</header>
+      <img src={image} alt={title} />
+      <p>{description}</p>
+      <p>{rating}</p>
+      <p>{releaseDate}</p>
     </div>
   );
 }
