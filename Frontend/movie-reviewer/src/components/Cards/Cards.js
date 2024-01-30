@@ -46,6 +46,7 @@ console.log(movies);
                     >
                     </input>
                 </form>
+                <div className="row">
             {movies && movies.map((movie) => (
                 <Card
                     key={movie.id}
@@ -57,6 +58,7 @@ console.log(movies);
                     releaseDate={movie.release_date}
                 />
             ))}
+            </div>
         </div>
     )
 }
