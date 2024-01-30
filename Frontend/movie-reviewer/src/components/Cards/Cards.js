@@ -2,24 +2,28 @@ import "./Cards.css";
 import "../Card/Card.js";
 import Card from "../Card/Card.js";
 import { useState, useEffect } from "react";
-const APILINK = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=8ecf6fb52cd3882c86f4ea26d10823e2&page=1';
-const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=8ecf6fb52cd3882c86f4ea26d10823e2&query=";
+
+const API_Key = process.env.REACT_APP_API_KEY;
+const APILINK = `https://api.themoviedb.org/3/movie/popular?api_key=${API_Key}&language=en-US&page=1`;
+const SEARCHAPI = `https://api.themoviedb.org/3/search/movie?&api_key=${API_Key}&query=`;
 
 
 function Cards() {
     const [movies, setMovies] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
 
-    async function getMovies() {
-        const response = await fetch(APILINK);
+    async function getMovies(movie_Link) {
+        const response = await fetch(movie_Link);
         const data = await response.json();
         setMovies(data.results);      
     }
 
     useEffect(() => {
-        getMovies();
+        getMovies(APILINK);
     }
     , []);
+
+console.log(movies);
 
     async function handleSearchMovies(e) {
         e.preventDefault();
@@ -48,7 +52,7 @@ function Cards() {
                     id={movie.id}
                     title={movie.title}
                     description={movie.overview}
-                    image={movie.poster_path}
+                    image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                     rating={movie.vote_average}
                     releaseDate={movie.release_date}
                 />
