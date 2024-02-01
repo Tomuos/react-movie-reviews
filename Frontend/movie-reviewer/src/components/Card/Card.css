@@ -32,8 +32,17 @@
     margin-bottom: 1rem;
 }
 
-span {
+.rating,
+.released,
+.overview {
     font-size: 1 rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.content-css > .overview
+ {
+    font-size: 1rem;
     font-weight: 700;
     margin-bottom: 1rem;
 }
@@ -54,4 +63,11 @@ span {
     font-weight: 400;
     margin-bottom: 1rem;
     text-align: left;
+}
+.content-css {
+    text-align: left;
+}
+
+#description span {
+    font-weight: bold;
 }
