@@ -33,16 +33,8 @@
 }
 
 .rating,
-.released,
-.overview {
+.released {
     font-size: 1 rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.content-css > .overview
- {
-    font-size: 1rem;
     font-weight: 700;
     margin-bottom: 1rem;
 }
