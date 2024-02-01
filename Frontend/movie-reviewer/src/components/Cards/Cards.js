@@ -23,7 +23,7 @@ function Cards() {
     }
     , []);
 
-console.log(movies);
+// console.log(movies);
 
     async function handleSearchMovies(e) {
         e.preventDefault();
@@ -31,7 +31,7 @@ console.log(movies);
             const response = await fetch(SEARCHAPI + searchTerm);
             const data = await response.json();
             setMovies(data.results);
-            console.log(data.results);
+            // console.log(data.results);
             setSearchTerm('');
         }
     }

@@ -1,3 +1,35 @@
 .row{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+    margin: 0 auto;
+
+}
+
+@media screen and (max-width: 1024px){
+    .row{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+}
+
+@media screen and (max-width: 768px){
+    .row{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+}
+
+@media screen and (max-width: 480px){
+    .row{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+
+@media screen and (max-width: 320px){
+    .row{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
 }
