@@ -32,7 +32,7 @@ function Cards() {
             const response = await fetch(SEARCHAPI + searchTerm);
             const data = await response.json();
             setMovies(data.results);
-            // console.log(data.results);
+            console.log(data.results);
             setSearchTerm('');
         }
     }

@@ -1,7 +1,8 @@
 import "./Card.css";
 import { useState } from "react";
+import { NavLink } from 'react-router-dom';
 
-function Card({ id, title, description, image, rating, releaseDate }) {
+function Card({ id, title, description, image, rating, releaseDate, handleSeeReviews, apiKey }) {
     // Limit for the show less functionality
     const DESCRIPTION_LIMIT = 100;
     const [isExpanded, setIsExpanded] = useState(false);
@@ -16,6 +17,9 @@ function Card({ id, title, description, image, rating, releaseDate }) {
             <div key={id} className="card">
                 <header className="title">{title}</header>
                 <img className="poster" src={image} alt={title} />
+                <NavLink
+                    onClick={handleSeeReviews}
+                    className="reviews-button">Reviews</NavLink>
                 <div id="description">
                     <span>Overview: </span>
                     {isExpanded ? description : truncatedDescription}
