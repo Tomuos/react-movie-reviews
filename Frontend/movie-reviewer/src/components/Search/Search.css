@@ -1,6 +1,6 @@
+
+
 input{
-    position:sticky;
-    
     font-size: large;
     padding: 12px 20px;
     margin: 8px 15px;
@@ -38,3 +38,4 @@ input:hover{
     color: white;
     cursor: pointer;
 }
+

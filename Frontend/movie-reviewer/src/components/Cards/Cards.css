@@ -35,4 +35,14 @@
 }
 
 
-
+.searchBar{
+    top: 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    position: sticky;
+    margin-top: 20px;
+    background-color: #323232;
+    /* background-color: #ca2929; */
+    width: 100%;
+}

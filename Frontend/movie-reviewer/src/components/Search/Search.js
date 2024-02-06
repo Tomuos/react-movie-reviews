@@ -2,7 +2,7 @@ import './Search.css';
 
 export default function SearchMovie ({searchTerm, setSearchTerm, handleSearchMovies}) {
     return (
-        <div>
+        <div className='searchBar'>
             <form className="search">
                 <input
                     type="text"
