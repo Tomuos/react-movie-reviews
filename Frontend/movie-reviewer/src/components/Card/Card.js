@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NavLink } from 'react-router-dom';
 
 
-function Card({ id, title, description, image, rating, releaseDate, handleSeeReviews, apiKey }) {
+function Card({ id, title, description, image, rating, releaseDate, handleSeeReviews}) {
     // Limit for the show less functionality
     const DESCRIPTION_LIMIT = 100;
     const [isExpanded, setIsExpanded] = useState(false);
@@ -12,14 +12,6 @@ function Card({ id, title, description, image, rating, releaseDate, handleSeeRev
     const toggleDescription = () => {
         setIsExpanded(!isExpanded);
     };
-
-const [movie, setMovie] = useState(null);
-
-    async function getMovie(id) {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
-        const data = await response.json();
-        setMovie(data);
-
 
     return (
         <div className="row-of-tiles">
