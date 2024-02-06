@@ -2,6 +2,7 @@ import "./Cards.css";
 import "../Card/Card.js";
 import Card from "../Card/Card.js";
 import { useState, useEffect } from "react";
+import SearchMovie from "../Search/Search.js";
 
 const API_Key = process.env.REACT_APP_API_KEY;
 const APILINK = `https://api.themoviedb.org/3/movie/popular?api_key=${API_Key}&language=en-US&page=1`;
@@ -39,13 +40,8 @@ function Cards() {
 
     getMovies();
     return (
-        <div>
-            <form onSubmit={handleSearchMovies}>
-                <input type="search"
-                    onChange = {(e) => setSearchTerm(e.target.value)}
-                    >
-                    </input>
-                </form>
+        <div>            
+        <SearchMovie searchTerm={searchTerm} setSearchTerm={e => setSearchTerm(e.target.value)} handleSearchMovies={handleSearchMovies} />
                 <div className="row">
             {movies && movies.map((movie) => (
                 <Card
