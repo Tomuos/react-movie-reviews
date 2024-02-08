@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Cards />} /> 
         <Route path="/movie/:id" element={<MovieReviews />}/>
+        
       </Routes>
     </div>
   );
