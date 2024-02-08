@@ -27,7 +27,7 @@ function Card({ id, title, description, image, rating, releaseDate }) {
                         </button>
                     )}
                 </div>
-                <p><span className="rating" >Rating:</span> {parseInt(rating)} / 10</p>
+                <p><span className="rating" >Rating:</span> {(rating).toFixed(1)} / 10</p>
                 <p><span className="released">Released:</span> {releaseDate}</p>
             </div>
         </div>

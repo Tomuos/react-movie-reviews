@@ -1,10 +1,13 @@
 import "./MovieReviews.css";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import { getReviews } from "../../Backend-calls.js";
+
 
 function MovieReviews() {
     const { id } = useParams(); // Get the movie ID from the URL
     const [movie, setMovie] = useState(null); // State to hold the movie data
+    const [reviews, setReviews] = useState([]); // State to hold the reviews
 
     useEffect(() => {
         const API_Key = process.env.REACT_APP_API_KEY;
@@ -24,6 +27,19 @@ function MovieReviews() {
         fetchMovie();
     }, [id]); // Dependency array with the ID to refetch when it changes
 
+    useEffect(() => {
+        async function fetchReviews() {
+            try {
+                const data = await getReviews(id); // Fetch the reviews using the backend call
+                setReviews(data); // Store the reviews in state
+            } catch (error) {
+                console.error("Could not fetch reviews:", error);
+            }
+        }
+
+        fetchReviews();
+    }, [id]); // Dependency array with the ID to refetch when it changes
+    
     // Render the movie details using the 'movie' state
     return (
         <div className="reviews-page">
@@ -35,7 +51,7 @@ function MovieReviews() {
                         <div className="card-movie-details">
                             <header className="card-title"><span className="card-title-span" >Title: </span>{movie.title}</header>
                             <div id="card-description"><span className="card-overview">Overview: </span>{movie.overview}</div> 
-                            <p><span className="card-rating">Rating: </span> {movie.vote_average} / 10</p>
+                            <p><span className="card-rating">Rating: </span> {(movie.vote_average).toFixed(1)} / 10</p>
                             <p><span className="card-vote-count">Votes: </span> {movie.vote_count}</p>
                             <p><span className="card-released">Released: </span> {movie.release_date}</p>
                         </div>
@@ -46,6 +62,17 @@ function MovieReviews() {
             <div className="card-reviews-area">
                 <h1>Reviews</h1>
                 <p>Reviews will be displayed here</p>
+                <div className="card-reviews">
+                {reviews && reviews.map((review, index) => (
+                        <div key={index} className="card-review">
+                            <p><span className="card-review-user">User: </span>{review.user}</p>
+                            <p><span className="card-review-text">Review: </span>{review.review}</p>
+                        </div>
+                    ))}
+                    </div>
+                    <div className="no-reviews">
+                        {reviews.length === 0 && <p>No reviews yet</p>}
+                    </div>
             </div>
         </div>
     );

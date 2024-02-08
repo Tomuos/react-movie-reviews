@@ -19,7 +19,6 @@ function Cards() {
     async function getMovies(movie_Link) {
         const response = await fetch(movie_Link);
         const data = await response.json();
-        console.log(data)
         setMovies(data.results);      
     }
 
@@ -44,7 +43,7 @@ function Cards() {
 
 
 
-    getMovies();
+
     return (
         <div>            
         <SearchMovie searchTerm={searchTerm} setSearchTerm={e => setSearchTerm(e.target.value)} handleSearchMovies={handleSearchMovies} />
