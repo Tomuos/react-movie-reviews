@@ -1,0 +1,34 @@
+.reviews-page {
+    display: flex;
+    flex-direction: row;
+    background-color: #46105f;
+    
+}
+
+.card-movie {
+    background-color: #24484a;
+    padding: 30px;
+}
+
+
+.card-movie-details {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    font-size: 1.2rem;
+    gap: 10px;
+}
+
+.card-title-span,
+.card-overview,
+.card-rating,
+.card-vote-count,
+.card-released {
+    font-weight: bold;
+}
+
+.card-reviews-area {
+    background-color: rgb(47, 47, 79);
+    width: 100%;
+    /* height: 50%; */
+}

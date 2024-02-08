@@ -26,23 +26,27 @@ function MovieReviews() {
 
     // Render the movie details using the 'movie' state
     return (
-        <div>
+        <div className="reviews-page">
             {movie && (
-                <div className="movie-information">
-                    <h1>Movie Information</h1>
-                    <div key={movie.id} className="card">
-                        <header className="title">{movie.title}</header>
-                        <img className="poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
-                        <div id="description">
-                            <span>Overview: </span>
-                            {movie.overview}
+                    <div key={movie.id} className="card-movie">
+                        <h1>Movie Information</h1>   
+                        <img className="card-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+                        
+                        <div className="card-movie-details">
+                            <header className="card-title"><span className="card-title-span" >Title: </span>{movie.title}</header>
+                            <div id="card-description"><span className="card-overview">Overview: </span>{movie.overview}</div> 
+                            <p><span className="card-rating">Rating: </span> {movie.vote_average} / 10</p>
+                            <p><span className="card-vote-count">Votes: </span> {movie.vote_count}</p>
+                            <p><span className="card-released">Released: </span> {movie.release_date}</p>
                         </div>
-                        <p><span className="rating">Rating:</span> {movie.vote_average} / 10</p>
-                        <p><span className="vote-count">Votes:</span> {movie.vote_count}</p>
-                        <p><span className="released">Released:</span> {movie.release_date}</p>
+
                     </div>
-                </div>
             )}
+
+            <div className="card-reviews-area">
+                <h1>Reviews</h1>
+                <p>Reviews will be displayed here</p>
+            </div>
         </div>
     );
 }
