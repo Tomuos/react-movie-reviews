@@ -34,7 +34,7 @@ export default class ReviewsModels {
       }
   //get review
 
-  static async getReviews(reviewId) {
+  static async getReview(reviewId) {
       try {
         return await reviews.findOne({ _id: new ObjectId(reviewId) })
       } catch (e) {

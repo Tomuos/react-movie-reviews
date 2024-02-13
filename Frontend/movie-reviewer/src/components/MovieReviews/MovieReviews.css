@@ -135,3 +135,10 @@ textarea{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Horizontal offset, vertical offset, blur radius, color */
     border-radius: 5px;
 }
+
+.no-reviews {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 20px;
+}

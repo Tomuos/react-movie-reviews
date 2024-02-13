@@ -21,7 +21,7 @@ export default class ReviewsController {
       static async apiGetReview(req, res, next) {
         try {
           let id = req.params.id || {}
-          let review = await ReviewsModels.getReviews(id)
+          let review = await ReviewsModels.getReview(id)
           if (!review) {
             res.status(404).json({ error: "Not found" })
             return
@@ -75,7 +75,7 @@ export default class ReviewsController {
         }
       }
 
-      static async apiGetReviews(req, res, next) {
+      static async apigetReviewsByMovieId(req, res, next) {
         try {
           console.log('this is the req from the function')
           console.log(req)
