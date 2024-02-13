@@ -99,7 +99,7 @@ function MovieReviews() {
                         <div key={index} className="card-review">
                             <p><span className="card-review-user">User: </span>{review.user}</p>
                             <p><span className="card-review-text">Review: </span>{review.review}</p>
-                            <button onClick={() => handleGetReviewInfo(review.id)} className="edit-button" >Edit</button>
+                            <button onClick={() => handleGetReviewInfo(review._id)} className="edit-button"  >Edit</button>
                         </div>
                     ))}
                 <div className="no-reviews">

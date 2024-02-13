@@ -37,6 +37,12 @@
     /* height: 50%; */
 }
 
+.card-review-user,
+.card-review-text {
+    font-weight: bold; /* This will make the text bold */
+    font-size: large;
+}
+
 .addReview {
     display: flex;
     flex-direction: column;
@@ -142,3 +148,45 @@ textarea{
     text-align: center;
     margin-top: 20px;
 }
+
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+
+}
+
+.modal-content{
+    background-color: #24484a;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.close{
+    color: white;
+    font-size: 2rem;
+    align-self: flex-end;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.close:hover {
+    color: #f00; /* Changes color on hover, example is red */
+    transform: scale(1.1); /* Makes the 'X' slightly larger on hover */
+  }
