@@ -73,7 +73,20 @@ function MovieReviews() {
                     <div className="no-reviews">
                         {reviews.length === 0 && <p>No reviews yet</p>}
                     </div>
+
+            <div className="addReview">
+                <h1>Add a Review</h1>
+                <p>Review form will be displayed here</p>
+                <form>
+                    <input type="text" placeholder="Your name" className="input-name" />
+                    <textarea className="text-input"  placeholder="Your review" />
+                    <button className="reviewButton" type="submit">Submit</button>
+                    
+                </form>
+
             </div>
+            </div>
+
         </div>
     );
 }

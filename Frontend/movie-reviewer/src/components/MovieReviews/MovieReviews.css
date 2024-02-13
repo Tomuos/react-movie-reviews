@@ -30,5 +30,85 @@
 .card-reviews-area {
     background-color: rgb(47, 47, 79);
     width: 100%;
+    padding: 20px;
+    color: white;
+    gap: 10px;
+
     /* height: 50%; */
+}
+
+.addReview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background-color: #24484a;
+    color: white;
+}
+/* text area with set rows and no editiable sizes */
+textarea{
+    resize: none;
+    overflow: hidden;
+    margin-top: 10px;
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    scrollbar-width: thin;
+}
+
+.reviewButton {
+    background-color: #5a0d7d;
+    color: white;
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.reviewButton:hover {
+    background-color: #9b58ba;
+    color: black;
+}
+
+.input-name{
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 2px solid #cc4a4a;
+    outline: none;
+    transition: 0.5s;
+}
+
+.input-name:hover::placeholder{
+    
+    color: white;
+}
+
+.input-name:hover{
+    background-color: #cc4a4a;
+    color: white;
+    
+}
+
+.text-input{
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 2px solid #cc4a4a;
+    outline: none;
+    transition: 0.5s;
+}
+
+.text-input:hover::placeholder{
+    
+    color: white;
+}
+
+.text-input:hover{
+    background-color: #cc4a4a;
+    color: white;
 }

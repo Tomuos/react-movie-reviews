@@ -1,6 +1,6 @@
 
 
-input{
+.search-input{
     font-size: large;
     padding: 12px 20px;
     margin: 8px 15px;
@@ -12,16 +12,16 @@ input{
     border-radius: 5px;
 }
 
-input:hover::placeholder{
+.search-input:hover::placeholder{
     color: white;
 }
 
-input:hover{
+.search-input:hover{
     background-color: #cc4a4a;
     color: white;
 }
 
-.search-button{
+.search-input-button{
     font-size: large;
     padding: 12px 20px;
     margin: 8px 15px;
@@ -33,7 +33,7 @@ input:hover{
     border-radius: 5px;
 }
 
-.search-button:hover{
+.search-input-button:hover{
     background-color: #cc4a4a;
     color: white;
     cursor: pointer;

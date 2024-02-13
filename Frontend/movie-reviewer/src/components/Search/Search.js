@@ -8,9 +8,10 @@ export default function SearchMovie ({searchTerm, setSearchTerm, handleSearchMov
                     type="text"
                     placeholder="Look for a movie..."
                     value={searchTerm}
-                    onChange={setSearchTerm}                
+                    onChange={setSearchTerm}      
+                    className='search-input'          
                     />
-                <button onClick={handleSearchMovies} className='search-button'>Search</button>
+                <button onClick={handleSearchMovies} className='search-button search-input'>Search</button>
             </form>
         </div>
         ) 
