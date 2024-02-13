@@ -8,3 +8,15 @@ body {
   background-color: #323232;
   color: white;
 }
+
+::placeholder{
+  color: black;
+  font-size: 1.2rem;
+}
+
+input, textarea {
+  font-size: 16px; /* Sets the font size */
+  padding: 8px;   /* Sets the padding inside the input fields */
+  font-family: Arial, sans-serif; /* Sets the font type */
+  margin: 5px 0;  /* Adds spacing between the elements and other content */
+}

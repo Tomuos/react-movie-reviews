@@ -112,3 +112,26 @@ textarea{
     background-color: #cc4a4a;
     color: white;
 }
+
+.reviews-header {
+    color: white;
+}
+
+.card-reviews {
+    display: flex;
+    flex-direction: column;
+    background-color: #24484a;
+    gap: 10px;
+    padding: 20px;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 15px;
+}
+
+.card-review {
+    background-color: white; /* Or any other color you want for the box */
+    padding: 15px; /* Spacing inside the box */
+    margin-bottom: 10px; /* Space between each review box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Horizontal offset, vertical offset, blur radius, color */
+    border-radius: 5px;
+}
