@@ -34,3 +34,21 @@ export const getReview = async (reviewId) => {
     const data = await response.json();
     return data;
 }
+
+export const editReview = async (reviewId, review, user) => {
+    const response = await fetch(`http://localhost:8000/api/v1/reviews/${reviewId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+            review: review, user: user, reviewId: reviewId
+        }),
+    });
+    console.log(response);
+    if (response.ok) {
+        return response;
+    } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+}

@@ -42,7 +42,8 @@
     align-items: center;
     position: sticky;
     margin-top: 20px;
-    background-color: #323232;
+    background-color: rgb(47, 47, 79);
+    /* background-color: #323232; */
     /* background-color: #ca2929; */
     width: 100%;
 }

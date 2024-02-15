@@ -14,9 +14,9 @@
     justify-content: space-between;
     align-items: center;
     width: 30rem;
-    background-color: #fff;
-    color:#323232;
-    border: 5px solid #5ae922;
+    background-color: #24484a;
+    color:#fff;
+    border: 5px solid #24484a;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.8);
     margin: 0 auto;
@@ -27,12 +27,29 @@
     
 }
 
+.card :link,:visited {
+    text-decoration: none;
+    color: #fff;
+    background-color: #921409;
+    padding: 0.3rem;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-weight: 700;
+}
 
+.card :link:hover {
+    
+    color: #921409;;
+    background-color: #fff
+}
 
 .card .title {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.5rem; /* Adjust the font size as needed */
+    
+    overflow: hidden; /* Ensures that the text doesn't spill out of its container */
+    text-overflow: ellipsis; /* Adds an ellipsis if the text is too long to fit */
     margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .rating,

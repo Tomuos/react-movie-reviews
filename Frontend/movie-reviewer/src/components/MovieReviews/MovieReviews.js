@@ -1,7 +1,7 @@
 import "./MovieReviews.css";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import { getReviewsByMovieId, addReview, getReview } from "../../Backend-calls.js";
+import { getReviewsByMovieId, addReview, getReview, editReview } from "../../Backend-calls.js";
 
 
 function MovieReviews() {
@@ -68,7 +68,28 @@ function MovieReviews() {
         setCurrentReview(data); // Store the review information in state
     
     }
+// modal background click to close modal
+    // Close the modal
+    function handleModalBackgroundClink(event) {
+        if (event.target === event.currentTarget) {
+            setIsModalOpen(false);
+        }
+    }
 
+    // Edit a review
+    async function handleEditReview(event) {
+        event.preventDefault();
+        const data = await editReview(currentReview._id, review, user); // Edit the review using the backend call
+        console.log(data);
+        if (data.ok) {
+            const reviews = await getReviewsByMovieId(id); // Fetch the reviews again to update the list
+            setReviews(reviews);
+            setIsModalOpen(false); // Close the modal
+            console.log("Review edited successfully");
+        } else {    
+            console.error("Could not edit review:", data.error);
+        }
+    }
 
 
     
@@ -131,23 +152,23 @@ function MovieReviews() {
                         
                 {/* Modal for editing reviews */}
                 {isModalOpen && (
-                    <div className="modal">
+                    <div className="modal" onClick={handleModalBackgroundClink}>
                         <div className="modal-content">
                             <span className="close" onClick={() => setIsModalOpen(false)}>&times;</span>
                             <h2>Edit Review</h2>
                             {currentReview && (
-                                <form onSubmit={handleAddReview}>
+                                <form onSubmit={handleEditReview}>
                                     <input 
                                         onChange = {e => setUser(e.target.value)}
                                         type="text" 
                                         placeholder="Your name" 
                                         className="input-name" 
-                                        value={currentReview.user} />
+                                        defaultValue={currentReview.user} />
                                     <textarea 
                                         onChange = {e => setReview(e.target.value)}
                                         className="text-input"  
                                         placeholder="Your review" 
-                                        value={currentReview.review} />
+                                        defaultValue={currentReview.review} />
                                     <button 
                                         className="reviewButton" 
                                         type="submit">Save</button>
