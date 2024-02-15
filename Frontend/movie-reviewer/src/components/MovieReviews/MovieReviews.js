@@ -9,7 +9,9 @@ function MovieReviews() {
     const [movie, setMovie] = useState(null); // State to hold the movie data
     const [reviews, setReviews] = useState([]); // State to hold the reviews
     const [user, setUser] = useState(""); // State to hold the user name
+    const [addUser, setAddUser] = useState(""); // State to hold the user name
     const [review, setReview] = useState(""); // State to hold the review text
+    const [addReview, setAddReview] = useState(""); // State to hold the review text
     const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal
     const [currentReview, setCurrentReview] = useState(null); // State to hold the current review
 
@@ -60,14 +62,17 @@ function MovieReviews() {
 
 // Edit review button, When clicked open modal, Get review information, Populate edit form, Make edits, Update/save, Put sent, Edited review diplayed 
 
-    // Open the modal and get the review information
-    async function handleGetReviewInfo(reviewId) {
-        setIsModalOpen(true); // Open the modal
-        const data = await getReview(reviewId); // Get the review information using the backend call
-        console.log(data);
-        setCurrentReview(data); // Store the review information in state
     
-    }
+    // Open the modal and get the review information
+async function handleGetReviewInfo(reviewId) {
+    const data = await getReview(reviewId); // Get the review information using the backend call
+    console.log(data);
+    setCurrentReview(data); // Store the review information in state
+    setUser(data.user); // Set user state
+    setReview(data.review); // Set review state
+    setIsModalOpen(true); // Open the modal
+}
+
 // modal background click to close modal
     // Close the modal
     function handleModalBackgroundClink(event) {
@@ -76,20 +81,28 @@ function MovieReviews() {
         }
     }
 
-    // Edit a review
-    async function handleEditReview(event) {
-        event.preventDefault();
-        const data = await editReview(currentReview._id, review, user); // Edit the review using the backend call
-        console.log(data);
-        if (data.ok) {
-            const reviews = await getReviewsByMovieId(id); // Fetch the reviews again to update the list
-            setReviews(reviews);
+  // Edit a review
+async function handleEditReview(event) {
+    event.preventDefault();
+    try {
+        // Ensure we are sending both the possibly updated review and user
+        const updatedReview = review || currentReview.review;
+        const updatedUser = user || currentReview.user;
+
+        const response = await editReview(currentReview._id, updatedReview, updatedUser);
+        console.log(response);
+
+        if (response.ok) {
+            // Update the local state to reflect the changes
+            setReviews(reviews.map(r => r._id === currentReview._id ? { ...r, review: updatedReview, user: updatedUser } : r));
             setIsModalOpen(false); // Close the modal
             console.log("Review edited successfully");
-        } else {    
-            console.error("Could not edit review:", data.error);
         }
+    } catch (error) {
+        console.error("Could not edit review:", error);
     }
+}
+
 
 
     
@@ -133,15 +146,19 @@ function MovieReviews() {
                     <h1>Add a Review</h1>
                     <p>Review form will be displayed here</p>
                     <form onSubmit={handleAddReview}>
-                        <input 
-                            onChange = {e => setUser(e.target.value)}
+                    <input 
+                            onChange={e => setAddUser(e.target.value)}
                             type="text" 
                             placeholder="Your name" 
-                            className="input-name" />
+                            className="input-name" 
+                            value={user} // Controlled component
+                        />
                         <textarea 
-                            onChange = {e => setReview(e.target.value)}
+                            onChange={e => setAddReview(e.target.value)}
                             className="text-input"  
-                            placeholder="Your review" />
+                            placeholder="Your review"
+                            value={review} // Controlled component
+                        />
                         <button 
                             className="reviewButton" 
                             type="submit">Submit</button>
