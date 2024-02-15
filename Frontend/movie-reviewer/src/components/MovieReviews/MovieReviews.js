@@ -9,9 +9,9 @@ function MovieReviews() {
     const [movie, setMovie] = useState(null); // State to hold the movie data
     const [reviews, setReviews] = useState([]); // State to hold the reviews
     const [user, setUser] = useState(""); // State to hold the user name
-    const [addUser, setAddUser] = useState(""); // State to hold the user name
+    const [createUser, setCreateUser] = useState(""); // State to hold the user name
     const [review, setReview] = useState(""); // State to hold the review text
-    const [addReview, setAddReview] = useState(""); // State to hold the review text
+    const [createReview, setCreateReview] = useState(""); // State to hold the review text
     const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal
     const [currentReview, setCurrentReview] = useState(null); // State to hold the current review
 
@@ -49,11 +49,13 @@ function MovieReviews() {
     // Add a review
     async function handleAddReview(event) {
         event.preventDefault();
-        const data = await addReview(id, user, review); // Add the review using the backend call
+        const data = await addReview(id, createUser, createReview); // Add the review using the backend call
         console.log(data);
         if (data.ok) {
             const reviews = await getReviewsByMovieId(id); // Fetch the reviews again to update the list
             setReviews(reviews);
+            setCreateUser(""); // Clear the user input
+            setCreateReview(""); // Clear the review input
             console.log("Review added successfully");
         } else {
             console.error("Could not add review:", data.error);
@@ -147,17 +149,17 @@ async function handleEditReview(event) {
                     <p>Review form will be displayed here</p>
                     <form onSubmit={handleAddReview}>
                     <input 
-                            onChange={e => setAddUser(e.target.value)}
+                            onChange={e => setCreateUser(e.target.value)}
                             type="text" 
                             placeholder="Your name" 
                             className="input-name" 
-                            value={user} // Controlled component
+                            // value={user} // Controlled component
                         />
                         <textarea 
-                            onChange={e => setAddReview(e.target.value)}
+                            onChange={e => setCreateReview(e.target.value)}
                             className="text-input"  
                             placeholder="Your review"
-                            value={review} // Controlled component
+                            // value={review} // Controlled component
                         />
                         <button 
                             className="reviewButton" 
