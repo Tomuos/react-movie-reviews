@@ -42,7 +42,9 @@ export const editReview = async (reviewId, review, user) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-            review: review, user: user, reviewId: reviewId
+            // reviewId: reviewId,
+            review: review,
+            user: user, 
         }),
     });
     console.log(response);

@@ -87,16 +87,12 @@ async function handleGetReviewInfo(reviewId) {
 async function handleEditReview(event) {
     event.preventDefault();
     try {
-        // Ensure we are sending both the possibly updated review and user
-        const updatedReview = review || currentReview.review;
-        const updatedUser = user || currentReview.user;
-
-        const response = await editReview(currentReview._id, updatedReview, updatedUser);
-        console.log(response);
+        const response = await editReview(currentReview._id, review, user);
+        console.log(response, "edit review response in movie reviews");
 
         if (response.ok) {
             // Update the local state to reflect the changes
-            setReviews(reviews.map(r => r._id === currentReview._id ? { ...r, review: updatedReview, user: updatedUser } : r));
+            setReviews(reviews.map(r => r._id === currentReview._id ? { ...r, review: review, user: user } : r));
             setIsModalOpen(false); // Close the modal
             console.log("Review edited successfully");
         }
@@ -153,13 +149,13 @@ async function handleEditReview(event) {
                             type="text" 
                             placeholder="Your name" 
                             className="input-name" 
-                            // value={user} // Controlled component
+                            value={createUser} // Controlled component
                         />
                         <textarea 
                             onChange={e => setCreateReview(e.target.value)}
                             className="text-input"  
                             placeholder="Your review"
-                            // value={review} // Controlled component
+                            value={createReview} // Controlled component
                         />
                         <button 
                             className="reviewButton" 
