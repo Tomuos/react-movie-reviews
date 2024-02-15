@@ -189,3 +189,8 @@ textarea{
     color: #f00; /* Changes color on hover, example is red */
     transform: scale(1.1); /* Makes the 'X' slightly larger on hover */
   }
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}

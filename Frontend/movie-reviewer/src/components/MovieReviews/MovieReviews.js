@@ -1,7 +1,7 @@
 import "./MovieReviews.css";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import { getReviewsByMovieId, addReview, getReview, editReview } from "../../Backend-calls.js";
+import { getReviewsByMovieId, addReview, getReview, editReview, deleteReview } from "../../Backend-calls.js";
 
 
 function MovieReviews() {
@@ -101,6 +101,23 @@ async function handleEditReview(event) {
     }
 }
 
+// Delete a review
+
+async function removeReview() {
+    try {
+        const response = await deleteReview(currentReview._id);
+        console.log(response, "delete review response in movie reviews");
+        if (response.ok) {
+            // Update the local state to reflect the changes
+            setReviews(reviews.filter(r => r._id !== currentReview._id));
+           
+            console.log("Review deleted successfully");
+        }
+    } catch (error) {
+        console.error("Could not delete review:", error);
+    }
+}
+
 
 
     
@@ -131,7 +148,11 @@ async function handleEditReview(event) {
                         <div key={index} className="card-review">
                             <p><span className="card-review-user">User: </span>{review.user}</p>
                             <p><span className="card-review-text">Review: </span>{review.review}</p>
+
+                            <div className="space-between">
                             <button onClick={() => handleGetReviewInfo(review._id)} className="edit-button"  >Edit</button>
+                            <button className="delete-button" onClick={() => removeReview(review._id)} >Delete</button>
+                            </div>
                         </div>
                     ))}
                 <div className="no-reviews">
@@ -190,8 +211,12 @@ async function handleEditReview(event) {
                                 </form>
                             )}
                         </div>
+                        
                     </div>
                 )}
+
+
+
         </div>
     );
 }

@@ -54,3 +54,16 @@ export const editReview = async (reviewId, review, user) => {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
 }
+
+// deleteReview function
+
+export const deleteReview = async (reviewId) => {
+    const response = await fetch(`http://localhost:8000/api/v1/reviews/${reviewId}`, {
+        method: 'DELETE',
+    });
+    if (response.ok) {
+        return response;
+    } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+}
