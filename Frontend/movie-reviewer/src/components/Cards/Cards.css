@@ -1,19 +1,20 @@
 .row{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1rem;
+    justify-content:space-between;
+    /* grid-gap: 1rem; */
     margin: 0 auto;
 
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 2000px){
     .row{
         grid-template-columns: repeat(4, 1fr);
     }
     
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1680px){
     .row{
         grid-template-columns: repeat(3, 1fr);
     }
@@ -22,7 +23,7 @@
 
 @media screen and (max-width: 480px){
     .row{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
     
 }
