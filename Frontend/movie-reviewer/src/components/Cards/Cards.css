@@ -21,6 +21,20 @@
     
 }
 
+@media screen and (max-width: 1280px){
+    .row{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+
+@media screen and (max-width: 768px){
+    .row{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+}
+
 @media screen and (max-width: 480px){
     .row{
         grid-template-columns: repeat(1, 1fr);
