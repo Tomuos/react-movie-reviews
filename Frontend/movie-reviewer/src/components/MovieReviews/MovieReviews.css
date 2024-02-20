@@ -132,7 +132,16 @@ textarea{
     color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     margin-bottom: 15px;
+    height: 70%;
+    overflow-y: scroll;
+    scrollbar-color: #cc4a4a rgba(0, 0, 0, 0.3);
+    scrollbar-gutter: stable;
 }
+
+.card-reviews::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+}
+
 
 .card-review {
     background-color: white; /* Or any other color you want for the box */
