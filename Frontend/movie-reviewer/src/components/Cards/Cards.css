@@ -1,3 +1,4 @@
+
 .row{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -25,6 +26,7 @@
     .row{
         grid-template-columns: repeat(2, 1fr);
     }
+   
     
 }
 
@@ -33,13 +35,20 @@
         grid-template-columns: repeat(1, 1fr);
     }
     
+    .search-input, .search-button {
+        font-size: medium; /* Adjust font size */
+        padding: 10px 18px; /* Adjust padding */
+    }
 }
 
 @media screen and (max-width: 480px){
     .row{
         grid-template-columns: repeat(1, 1fr);
     }
-    
+    .search-input, .search-button {
+        font-size: small; /* Further adjust font size */
+        padding: 8px 16px; /* Further adjust padding */
+    }
 }
 
 @media screen and (max-width: 320px){
@@ -62,3 +71,4 @@
     /* background-color: #ca2929; */
     width: 100%;
 }
+

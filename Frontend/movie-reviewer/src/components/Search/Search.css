@@ -21,7 +21,7 @@
     color: white;
 }
 
-.search-input-button{
+/* .search-input-button{
     font-size: large;
     padding: 12px 20px;
     margin: 8px 15px;
@@ -37,5 +37,31 @@
     background-color: #cc4a4a;
     color: white;
     cursor: pointer;
+} */
+
+.search-button {
+    background-color: transparent;
+    color: #FFFFFF;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    cursor: pointer; /* Cursor changes to a hand when hovered */
 }
 
+.search-button:hover {
+    background-color: #cc4a4a; /* Hover effect */
+    color: white;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .search-input, .search-button {
+        font-size: medium; /* Smaller font size */
+        padding: 10px 15px; /* Smaller padding */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .search-input, .search-button {
+        font-size: small; /* Even smaller font size */
+        padding: 8px 10px; /* Even smaller padding */
+    }
+}

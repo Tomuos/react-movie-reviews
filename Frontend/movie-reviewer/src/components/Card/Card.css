@@ -83,3 +83,46 @@
 #description span {
     font-weight: bold;
 }
+
+
+/* Responsive adjustments */
+
+@media screen and (max-width: 2000px){
+    .card {
+        width: 28rem;
+        height: 40rem;
+    }
+}
+
+@media screen and (max-width: 1680px){
+    .card {
+        width: 28rem;
+        height: 40rem;
+    }
+}
+
+@media screen and (max-width: 1280px){
+    .card {
+        width: 24rem;
+        height: 34rem;
+        margin: 5px;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .card {
+        width: 28rem;
+        height: 40rem;
+    }
+}
+
+
+@media screen and (max-width: 480px){
+    .card {
+        width: 22rem;
+        height: 30rem;
+        margin: 2px;
+        padding: 10px;
+    }
+}
