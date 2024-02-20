@@ -27,21 +27,30 @@
     
 }
 
-.card :link,:visited {
+.reviews-button {
     text-decoration: none;
-    color: #fff;
-    background-color: #921409;
+    color: #fff; /* White text color */
+    background-color: #921409; /* Dark red background */
     padding: 0.3rem;
     border-radius: 5px;
     transition: 0.3s;
     font-weight: 700;
 }
 
-.card :link:hover {
-    
-    color: #921409;;
-    background-color: #fff
+/* Specify the :visited state without changing its appearance */
+.reviews-button:visited {
+    color: #fff; /* Keep text color white */
+    background-color: #921409; /* Keep background dark red */
+    text-decoration: none;
+
 }
+
+/* Enhance the :hover state specificity and keep its styles */
+.card .reviews-button:hover {
+    color: #921409; /* Dark red text color on hover */
+    background-color: #fff; /* White background on hover */
+}
+
 
 .card .title {
     font-size: 1.5rem; /* Adjust the font size as needed */
@@ -83,6 +92,28 @@
 #description span {
     font-weight: bold;
 }
+
+.show-more {
+    
+    color: #921409; /* White text color */
+    background-color: #fff;  /* Dark red background */
+    padding: 0.3rem;
+    border-radius: 5px;    
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
+.show-less {
+    color: #fff; /* White text color */
+    background-color: #921409;  /* Dark red background */
+    padding: 0.3rem;
+    border-radius: 5px;    
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
 
 
 /* Responsive adjustments */

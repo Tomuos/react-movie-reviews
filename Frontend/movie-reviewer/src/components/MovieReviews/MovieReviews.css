@@ -1,13 +1,17 @@
 .reviews-page {
     display: flex;
     flex-direction: row;
-    background-color: #46105f;
+    background-color:rgb(47, 47, 79);;
+    
     
 }
 
 .card-movie {
     background-color: #24484a;
-    padding: 30px;
+    gap: 10px;
+    padding: 20px;
+    margin: 20px 0px 0px 20px;
+    
 }
 
 
@@ -19,12 +23,20 @@
     gap: 10px;
 }
 
+.card-poster{
+    margin: 10px 0px;
+
+}
+
+
 .card-title-span,
 .card-overview,
 .card-rating,
 .card-vote-count,
 .card-released {
     font-weight: bold;
+    font-size: 1.4rem;
+    color: #ffee2f;
 }
 
 .card-reviews-area {
@@ -50,6 +62,7 @@
     padding: 20px;
     background-color: #24484a;
     color: white;
+  
 }
 /* text area with set rows and no editiable sizes */
 textarea{
@@ -64,20 +77,19 @@ textarea{
 }
 
 .reviewButton {
-    background-color: #5a0d7d;
-    color: white;
-    margin-top: 5px;
-    padding: 10px;
-    font-size: 1.2rem;
-    border: none;
-    cursor: pointer;
+    background-color: transparent;
+    color: #FFFFFF;
+    border:2px solid #cc4a4a;
+    font-size: large;
+    padding: 10px 20px;
     border-radius: 10px;
-    transition: 0.5s;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    cursor: pointer; /* Cursor changes to a hand when hovered */
 }
 
 .reviewButton:hover {
-    background-color: #9b58ba;
-    color: black;
+    background-color: #cc4a4a; /* Hover effect */
+    color: white;
 }
 
 .input-name{
@@ -132,7 +144,7 @@ textarea{
     color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     margin-bottom: 15px;
-    height: 70%;
+    height: 50%;
     overflow-y: scroll;
     scrollbar-color: #cc4a4a rgba(0, 0, 0, 0.3);
     scrollbar-gutter: stable;

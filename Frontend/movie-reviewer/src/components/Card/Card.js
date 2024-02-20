@@ -22,8 +22,9 @@ function Card({ id, title, description, image, rating, releaseDate }) {
                     <span>Overview: </span>
                     {displayedDescription}
                     {showMore && (
-                        <button onClick={toggleDescription}>
+                        <button className={isExpanded ? 'show-less' : 'show-more'} onClick={toggleDescription}>
                             {isExpanded ? 'Show Less' : 'Show More'}
+                            
                         </button>
                     )}
                 </div>
