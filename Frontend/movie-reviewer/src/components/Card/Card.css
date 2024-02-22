@@ -55,13 +55,22 @@
 .card .title {
     font-size: 2vw;
     
-    overflow: hidden; /* Ensures that the text doesn't spill out of its container */
-    text-overflow: ellipsis; /* Adds an ellipsis to the end of the text if it overflows */
-    margin-bottom: 1rem;
+    
+    
+    
     padding: 0.5rem;
     font-weight: 700;
     color: #ffee2f;
 }
+
+.card .title.smaller-font-size {
+    font-size: 1.2rem; /* Smaller font size */
+}
+
+.card .title.normal-font-size {
+    font-size: 1.5rem; /* Normal font size */
+}
+
 
 .rating,
 .released {
@@ -172,6 +181,15 @@
         width: 28rem;
         height: 40rem;
     }
+    .card .title.smaller-font-size {
+        font-size: 0.9rem; /* Smaller font size */
+    }
+    
+    .card .title.normal-font-size {
+        font-size: 1.5rem; /* Normal font size */
+    }
+    
+
 }
 
 

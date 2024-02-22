@@ -11,11 +11,16 @@ function Card({ id, title, description, image, rating, releaseDate }) {
     // const toggleDescription = () => {
     //     setIsExpanded(!isExpanded);
     // };
-
+    function adjustTitleFontSize(title) {
+        const maxTitleLength = 15; // Define the max length of title before resizing
+        const fontSize = title.length > maxTitleLength ? 'smaller-font-size' : 'normal-font-size';
+        return fontSize;
+    }
+    
     return (
         <div className="row-of-tiles">
             <div className="card">
-                <header className="title">{title}</header>
+            <div className={`title ${adjustTitleFontSize(title)}`}>{title}</div>
                 <img className="poster" src={image} alt={title} />
                 <Link to={`/movie/${id}`} className="reviews-button">Reviews</Link>
                 <div id="description">
