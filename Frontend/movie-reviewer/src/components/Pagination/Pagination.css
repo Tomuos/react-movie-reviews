@@ -1,6 +1,35 @@
 .pagination {
     display: flex;
-    justify-content: center;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    justify-content: center; /* Center the pagination controls */
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0; /* Add some space above and below the pagination bar */
+}
+
+.pagination button {
+    background-color: transparent; /* Set a transparent background */
+    border: 2px solid #cc4a4a; /* Red border color like in the search button */
+    color: #FFFFFF; /* White text color */
+    padding: 10px 20px; /* Padding inside the buttons */
+    margin: 0 5px; /* Margin between buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Mouse cursor changes to a hand icon when hovered */
+    transition: background-color 0.3s, color 0.3s; /* Transition for color and background */
+    font-size: 1rem; /* Adjust the font size as needed */
+}
+
+.pagination button:hover {
+    background-color: #cc4a4a; /* Red background color on hover */
+    color: white; /* Keep the text color white on hover */
+}
+
+.pagination button:disabled {
+    border-color: grey; /* Grey border for disabled button */
+    color: grey; /* Grey text color for disabled button */
+    cursor: default; /* Default cursor for disabled button */
+}
+
+.pagination span {
+    color: #FFFFFF; /* White text color for the page number */
+    padding: 10px 20px; /* Padding to match buttons */
 }
