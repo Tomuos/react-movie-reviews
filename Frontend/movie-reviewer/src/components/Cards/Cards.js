@@ -6,26 +6,29 @@ import { useState, useEffect } from "react";
 import SearchMovie from "../Search/Search.js";
 
 const API_Key = process.env.REACT_APP_API_KEY;
-const APILINK = `https://api.themoviedb.org/3/movie/popular?api_key=${API_Key}&language=en-US&page=1`;
-const SEARCHAPI = `https://api.themoviedb.org/3/search/movie?&api_key=${API_Key}&query=`;
 
 
 function Cards() {
     const [movies, setMovies] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [currentPage, setCurrentPage] = useState(1); // State hook must be inside the component
+    const totalPages =500;
     
+    const APILINK = `https://api.themoviedb.org/3/movie/popular?api_key=${API_Key}&language=en-US&page=${currentPage}`;
+    const SEARCHAPI = `https://api.themoviedb.org/3/search/movie?&api_key=${API_Key}&query=`;
 
 
     async function getMovies(movie_Link) {
         const response = await fetch(movie_Link);
         const data = await response.json();
-        setMovies(data.results);      
+        setMovies(data.results); 
+             
     }
 
     useEffect(() => {
         getMovies(APILINK);
     }
-    , []);
+    , [currentPage, APILINK]);
 
 
 
@@ -41,7 +44,8 @@ function Cards() {
     }
 
 
-
+    const goToNextPage = () => setCurrentPage(page => page + 1);
+    const goToPreviousPage = () => setCurrentPage(page => page - 1);
 
 
     return (
@@ -61,7 +65,15 @@ function Cards() {
                 />
             ))}
             </div>
-
+            <div className="pagination">
+                <button onClick={goToPreviousPage} disabled={currentPage === 1}>
+                    Prev
+                </button>
+                <span>Page {currentPage} of {totalPages}</span>
+                <button onClick={goToNextPage} disabled={currentPage === totalPages}>
+                    Next
+                </button>
+            </div>
         </div>
     )
 }
