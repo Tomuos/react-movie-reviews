@@ -2,38 +2,39 @@ import "./Cards.css";
 import "../Card/Card.js";
 import Card from "../Card/Card.js";
 import SearchMovie from "../Search/Search.js";
+import Pagination from "../Pagination/Pagination.js";
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 function Cards() {
     const [movies, setMovies] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1); // State hook must be inside the component
+    const [isSearch, setIsSearch] = useState(false);
     const totalPages =500;
 
-    const navigate = useNavigate();
     const location = useLocation();
 
     const API_Key = process.env.REACT_APP_API_KEY;
     const APILINK = `https://api.themoviedb.org/3/movie/popular?api_key=${API_Key}&language=en-US&page=${currentPage}`;
     const SEARCHAPI = `https://api.themoviedb.org/3/search/movie?&api_key=${API_Key}&query=`;
 
-
+    // Fetch movies from the API
     async function getMovies(movie_Link) {
         const response = await fetch(movie_Link);
         const data = await response.json();
         setMovies(data.results); 
     }
 
+    // Fetch movies from the API when the page loads, navigate to the current page
     useEffect(() => {
         getMovies(APILINK);
-        navigate(`/page=${currentPage}`);
     }
-    , [currentPage, APILINK, navigate]);
+    , [currentPage, APILINK]);
 
 
-
+    // Search for movies
     async function handleSearchMovies(e) {
         e.preventDefault();
         if (searchTerm) {
@@ -42,18 +43,13 @@ function Cards() {
             setMovies(data.results);
             console.log(data.results);
             setSearchTerm('');
+            setIsSearch(true);
         }
     }
 
-
-    const goToNextPage = () => {
-        setCurrentPage(page => page + 1)
-        navigate(`/page=${currentPage + 1}`);
-    };
-    const goToPreviousPage = () => {
-        setCurrentPage(page => page - 1)
-        navigate(`/page=${currentPage - 1}`);
-    };
+    // Set the current page functions
+    const goToNextPage = () => setCurrentPage(page => page + 1);
+    const goToPreviousPage = () => setCurrentPage(page => page - 1);
 
     // useEffect to scroll to top of the page when the page changes
     useEffect(()=> {
@@ -63,9 +59,16 @@ function Cards() {
 
     return (
         <div>            
-        <SearchMovie searchTerm={searchTerm} setSearchTerm={e => setSearchTerm(e.target.value)} handleSearchMovies={handleSearchMovies} />
-                <div className="row">
-            {movies && movies.map((movie) => (
+           <SearchMovie searchTerm={searchTerm} setSearchTerm={e => setSearchTerm(e.target.value)} handleSearchMovies={handleSearchMovies} />
+           
+           {!isSearch && <Pagination 
+                goToPreviousPage={goToPreviousPage} 
+                goToNextPage={goToNextPage} 
+                currentPage={currentPage} 
+                totalPages={totalPages} />}
+            
+            <div className="row">
+                {movies && movies.map((movie) => (
                 <Card
                     key={movie.id}
                     id={movie.id}
@@ -78,15 +81,12 @@ function Cards() {
                 />
             ))}
             </div>
-            <div className="pagination">
-                <button onClick={goToPreviousPage} disabled={currentPage === 1}>
-                    Prev
-                </button>
-                <span>Page {currentPage} of {totalPages}</span>
-                <button onClick={goToNextPage} disabled={currentPage === totalPages}>
-                    Next
-                </button>
-            </div>
+
+            {!isSearch && <Pagination 
+                goToPreviousPage={goToPreviousPage} 
+                goToNextPage={goToNextPage} 
+                currentPage={currentPage} 
+                totalPages={totalPages} />}
         </div>
     )
 }
