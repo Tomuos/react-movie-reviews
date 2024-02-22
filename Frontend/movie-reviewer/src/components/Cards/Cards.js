@@ -1,11 +1,9 @@
 import "./Cards.css";
 import "../Card/Card.js";
 import Card from "../Card/Card.js";
-import { useState, useEffect } from "react";
-
 import SearchMovie from "../Search/Search.js";
-
-const API_Key = process.env.REACT_APP_API_KEY;
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 function Cards() {
@@ -13,7 +11,11 @@ function Cards() {
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1); // State hook must be inside the component
     const totalPages =500;
-    
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const API_Key = process.env.REACT_APP_API_KEY;
     const APILINK = `https://api.themoviedb.org/3/movie/popular?api_key=${API_Key}&language=en-US&page=${currentPage}`;
     const SEARCHAPI = `https://api.themoviedb.org/3/search/movie?&api_key=${API_Key}&query=`;
 
@@ -22,13 +24,13 @@ function Cards() {
         const response = await fetch(movie_Link);
         const data = await response.json();
         setMovies(data.results); 
-             
     }
 
     useEffect(() => {
         getMovies(APILINK);
+        navigate(`/page=${currentPage}`);
     }
-    , [currentPage, APILINK]);
+    , [currentPage, APILINK, navigate]);
 
 
 
@@ -44,8 +46,19 @@ function Cards() {
     }
 
 
-    const goToNextPage = () => setCurrentPage(page => page + 1);
-    const goToPreviousPage = () => setCurrentPage(page => page - 1);
+    const goToNextPage = () => {
+        setCurrentPage(page => page + 1)
+        navigate(`/page=${currentPage + 1}`);
+    };
+    const goToPreviousPage = () => {
+        setCurrentPage(page => page - 1)
+        navigate(`/page=${currentPage - 1}`);
+    };
+
+    // useEffect to scroll to top of the page when the page changes
+    useEffect(()=> {
+        window.scrollTo(0, 0);
+    }, [location]);
 
 
     return (
