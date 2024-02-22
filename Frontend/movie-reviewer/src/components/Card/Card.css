@@ -53,12 +53,14 @@
 
 
 .card .title {
-    font-size: 1.5rem; /* Adjust the font size as needed */
+    font-size: 2vw;
     
     overflow: hidden; /* Ensures that the text doesn't spill out of its container */
-    text-overflow: ellipsis; /* Adds an ellipsis if the text is too long to fit */
+    text-overflow: ellipsis; /* Adds an ellipsis to the end of the text if it overflows */
     margin-bottom: 1rem;
+    padding: 0.5rem;
     font-weight: 700;
+    color: #ffee2f;
 }
 
 .rating,
@@ -66,6 +68,7 @@
     font-size: 1 rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    color: #ffee2f;
 }
 
 .card .poster {
@@ -80,28 +83,45 @@
 }
 
 .card #description {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 400;
     margin-bottom: 1rem;
     text-align: left;
+    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #921409 #1d3c3e;
+    height: 150px;
+    /* background-color: #1d3c3e; */
+    padding: 0.5rem;
+    text-align: left;
 }
+
 .content-css {
     text-align: left;
 }
 
 #description span {
     font-weight: bold;
+    color: #ffee2f;
 }
 
 .show-more {
     
-    color: #921409; /* White text color */
-    background-color: #fff;  /* Dark red background */
+    color: #fff; /* White text color */
+    background-color: #921409;  /* Dark red background */
     padding: 0.3rem;
     border-radius: 5px;    
     font-weight: 700;
     border: none;
     cursor: pointer;
+    transition: 0.3s;
+    
+}
+
+.show-more:hover {
+    color: #921409; /* Dark red text color on hover */
+    background-color: #fff; /* White background on hover */
 }
 
 .show-less {
@@ -112,7 +132,13 @@
     font-weight: 700;
     border: none;
     cursor: pointer;
+    transition: 0.3s;
 }
+.show-less:hover {
+    color: #921409; /* Dark red text color on hover */
+    background-color: #fff; /* White background on hover */
+}
+
 
 
 

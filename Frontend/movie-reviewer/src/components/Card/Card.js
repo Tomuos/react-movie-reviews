@@ -1,16 +1,16 @@
 import "./Card.css";
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from 'react-router-dom';
 
 function Card({ id, title, description, image, rating, releaseDate }) {
-    const DESCRIPTION_LIMIT = 100;
-    const [isExpanded, setIsExpanded] = useState(false);
-    const showMore = description.length > DESCRIPTION_LIMIT;
-    const displayedDescription = isExpanded || !showMore ? description : description.slice(0, DESCRIPTION_LIMIT) + '...';
+    // const DESCRIPTION_LIMIT = 100;
+    // const [isExpanded, setIsExpanded] = useState(false);
+    // const showMore = description.length > DESCRIPTION_LIMIT;
+    // const displayedDescription = isExpanded || !showMore ? description : description.slice(0, DESCRIPTION_LIMIT) + '...';
 
-    const toggleDescription = () => {
-        setIsExpanded(!isExpanded);
-    };
+    // const toggleDescription = () => {
+    //     setIsExpanded(!isExpanded);
+    // };
 
     return (
         <div className="row-of-tiles">
@@ -20,13 +20,13 @@ function Card({ id, title, description, image, rating, releaseDate }) {
                 <Link to={`/movie/${id}`} className="reviews-button">Reviews</Link>
                 <div id="description">
                     <span>Overview: </span>
-                    {displayedDescription}
-                    {showMore && (
+                    {description}
+                    {/* {showMore && (
                         <button className={isExpanded ? 'show-less' : 'show-more'} onClick={toggleDescription}>
                             {isExpanded ? 'Show Less' : 'Show More'}
                             
                         </button>
-                    )}
+                    )} */}
                 </div>
                 <p><span className="rating" >Rating:</span> {(rating).toFixed(1)} / 10</p>
                 <p><span className="released">Released:</span> {releaseDate}</p>

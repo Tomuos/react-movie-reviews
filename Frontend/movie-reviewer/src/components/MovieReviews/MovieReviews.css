@@ -13,7 +13,11 @@
     margin: 20px 0px 0px 20px;
     
 }
-
+.card-movie h1 {
+    color: #ffee2f;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
 
 .card-movie-details {
     display: flex;
@@ -63,6 +67,10 @@
     background-color: #24484a;
     color: white;
   
+}
+
+.addReview h1 {
+    color: #ffee2f;
 }
 /* text area with set rows and no editiable sizes */
 textarea{
@@ -132,7 +140,7 @@ textarea{
 }
 
 .reviews-header {
-    color: white;
+    color: #ffee2f;
 }
 
 .card-reviews {
