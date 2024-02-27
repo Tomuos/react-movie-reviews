@@ -15,8 +15,7 @@ function MovieReviews() {
     const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal
     const [currentReview, setCurrentReview] = useState(null); // State to hold the current review
     const API_Key = process.env.REACT_APP_API_KEY;
-    const [movieInfo, setMovieInfo] = useState(null);
-    const [video, setVideo] = useState(null);
+
 
 
     useEffect(() => {
@@ -34,7 +33,7 @@ function MovieReviews() {
         }
 
         fetchMovie();
-    }, [id]); // Dependency array with the ID to refetch when it changes
+    }, [id, API_Key]); // Dependency array with the ID to refetch when it changes
 
     useEffect(() => {
         async function fetchReviews() {
@@ -65,28 +64,8 @@ function MovieReviews() {
     }}
 
 
-
-
-
-    async function fetchMovieInfo() {
-        const API_Key = process.env.REACT_APP_API_KEY;
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_Key}&language=en-US`);
-        const videoResponse = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_Key}&language=en-US`);
-        const data = await response.json();
-        const videoData = await videoResponse.json();
-        setVideo(videoData);
-        console.log(videoData);
-        setMovieInfo(data);
-        console.log(data);
-    }
-
-    useEffect(() => { fetchMovieInfo(); }, [id]);
-
-
-
 // Edit review button, When clicked open modal, Get review information, Populate edit form, Make edits, Update/save, Put sent, Edited review diplayed 
 
-    
     // Open the modal and get the review information
 async function handleGetReviewInfo(reviewId) {
     const data = await getReview(reviewId); // Get the review information using the backend call
