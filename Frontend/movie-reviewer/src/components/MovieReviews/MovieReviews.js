@@ -14,9 +14,12 @@ function MovieReviews() {
     const [createReview, setCreateReview] = useState(""); // State to hold the review text
     const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal
     const [currentReview, setCurrentReview] = useState(null); // State to hold the current review
+    const API_Key = process.env.REACT_APP_API_KEY;
+    const [movieInfo, setMovieInfo] = useState(null);
+    const [video, setVideo] = useState(null);
+
 
     useEffect(() => {
-        const API_Key = process.env.REACT_APP_API_KEY;
         async function fetchMovie() {
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_Key}&language=en-US`);
@@ -60,6 +63,25 @@ function MovieReviews() {
         } else {
             console.error("Could not add review:", data.error);
     }}
+
+
+
+
+
+    async function fetchMovieInfo() {
+        const API_Key = process.env.REACT_APP_API_KEY;
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_Key}&language=en-US`);
+        const videoResponse = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_Key}&language=en-US`);
+        const data = await response.json();
+        const videoData = await videoResponse.json();
+        setVideo(videoData);
+        console.log(videoData);
+        setMovieInfo(data);
+        console.log(data);
+    }
+
+    useEffect(() => { fetchMovieInfo(); }, [id]);
+
 
 
 // Edit review button, When clicked open modal, Get review information, Populate edit form, Make edits, Update/save, Put sent, Edited review diplayed 
@@ -110,7 +132,7 @@ async function removeReview() {
         if (response.ok) {
             // Update the local state to reflect the changes
             setReviews(reviews.filter(r => r._id !== currentReview._id));
-           
+
             console.log("Review deleted successfully");
         }
     } catch (error) {

@@ -28,7 +28,9 @@
     color: grey; /* Grey text color for disabled button */
     cursor: default; /* Default cursor for disabled button */
 }
-
+.pagination button:disabled:hover {
+    background-color: transparent; /* No background color on hover */
+}
 .pagination span {
     color: #FFFFFF; /* White text color for the page number */
     padding: 10px 20px; /* Padding to match buttons */
