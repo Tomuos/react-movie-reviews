@@ -1,3 +1,4 @@
+import './MovieInfo.css';
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -21,7 +22,7 @@ function MovieInfo() {
             setMovieInfo(movieData);
             // console.log("movie data",movieData);
             setCastInfo(castData);
-            // console.log("cast data",castData);
+            console.log("cast data",castData);
         }
 
         fetchMovieInfo(); 
@@ -39,12 +40,17 @@ function MovieInfo() {
                 {movieInfo && <p>Released: {movieInfo.release_date}</p>}
                 {movieInfo && <p>Runtime: {movieInfo.runtime} minutes</p>}
                 {video && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${video.results[video.results.length-1].key}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
-                {castInfo && <h2>Cast</h2>}
+                {castInfo && <h2>Top Cast</h2>}
                 {castInfo && castInfo.cast.map((actor, index) => {
-                    if (index < 5) {
+                    if (index < 10) {
                         return (
-                            <div key={actor.id}>
-                                <p>{actor.name} as {actor.character}</p>
+                            <div key={actor.id} className="actor-portrait">
+                                {actor.profile_path && <img src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`} alt={actor.name} />}
+                                {!actor.profile_path && <img src="/images/user.png" alt={actor.name} />}
+                                <div className="actor-info">
+                                    <p>{actor.name}</p>
+                                    <p>{actor.character}</p>
+                                </div>
                             </div>
                         )
                     }
