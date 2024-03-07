@@ -1,3 +1,5 @@
+
+
 .actor-portrait {
     display: flex;
     align-items: center;
@@ -16,4 +18,42 @@
     flex-direction: column;
     justify-content: center;
     margin-left: 20px;
+}
+
+.movie-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+.trailer{
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.movie-details {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.poster{
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.cast{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
 }

@@ -13,10 +13,12 @@ function Card({ id, title, description, image, rating, releaseDate }) {
     return (
         <div className="row-of-tiles">
             <div className="card">
-            <Link to={`/movie/${id}/info`} className="info-button">
+            <Link to={`/movie/${id}/info`} className="title-link">
                 <div className={`title ${adjustTitleFontSize(title)}`}>{title}</div>
             </Link>
-                <img className="poster" src={image} alt={title} />
+            <Link to={`/movie/${id}/info`} className="poster">
+            <img className="poster" src={image} alt={title} />
+            </Link>
                 <Link to={`/movie/${id}`} className="reviews-button">Reviews</Link>
                 <div id="description">
                     <span>Overview: </span>

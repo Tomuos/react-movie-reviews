@@ -84,11 +84,26 @@
     display: flex;
     justify-content: center;
     align-items: center;    
-    width: 60%;
-    height: 60%;
-    border-radius: 30px;    
-    padding: 1rem;
+    width: 70%;
+    height: 90%;
+    border-radius: 15px;    
+    padding: 0.2rem;
     
+}
+
+/* hover and enlarge image of mouse over of the poster */
+
+.poster img {
+   
+    border-radius: 15px;
+    object-fit: cover;
+    transition: all 0.3s ease-out; /* This applies the transition to all properties */
+}
+
+.poster img:hover {
+    /* No need to repeat properties that don't change on hover */
+   
+    transform: scale(1.44); /* Example transformation on hover */
 }
 
 .card #description {

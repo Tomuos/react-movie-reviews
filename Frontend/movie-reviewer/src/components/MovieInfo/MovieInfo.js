@@ -30,16 +30,27 @@ function MovieInfo() {
 
 
     return (
-        <div>
+        <div className='movie-container'>
             <h1>Movie Info</h1>
-            <div>
+            <div className='grid-container'>
+
+            <div className='movie-details'>
                 {movieInfo && <h2>{movieInfo.title}</h2>}
                 {movieInfo && <p>{movieInfo.overview}</p>}
-                {movieInfo && <img src={`https://image.tmdb.org/t/p/w500/${movieInfo.poster_path}`} alt={movieInfo.title} />}
                 {movieInfo && <p>Rating: {movieInfo.vote_average} / 10</p>}
                 {movieInfo && <p>Released: {movieInfo.release_date}</p>}
                 {movieInfo && <p>Runtime: {movieInfo.runtime} minutes</p>}
+                </div>
+
+                <div className='movie-poster'>
+                {movieInfo && <img src={`https://image.tmdb.org/t/p/w500/${movieInfo.poster_path}`} alt={movieInfo.title} />}
+                </div>
+
+                <div className='trailer'>
                 {video && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${video.results[video.results.length-1].key}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
+                </div>
+
+                <div className='movie-cast'>
                 {castInfo && <h2>Top Cast</h2>}
                 {castInfo && castInfo.cast.map((actor, index) => {
                     if (index < 10) {
@@ -57,7 +68,7 @@ function MovieInfo() {
                     return null;
                 })}
             </div>
-
+            </div>
         </div>
     )
 }
