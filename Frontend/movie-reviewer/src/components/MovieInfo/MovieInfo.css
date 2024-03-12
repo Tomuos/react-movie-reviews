@@ -45,6 +45,12 @@
     width: 100%;
     padding: 20px;
     margin: 20px 20px 20px 0px;
+    
+}
+.trailer-movie-cast-div h1 {
+    color: #ffee2f;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .trailer {

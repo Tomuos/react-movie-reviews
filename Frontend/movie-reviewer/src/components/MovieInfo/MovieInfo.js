@@ -49,6 +49,7 @@ function MovieInfo() {
                 </div>
 
                 <div className='trailer-movie-cast-div'>
+                <h1>Trailer</h1>
                     <div className='trailer'>
                         {video && <iframe src={`https://www.youtube.com/embed/${video.results[video.results.length-1].key}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
                     </div>
