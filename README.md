@@ -24,8 +24,8 @@ Colour pallette: may need changing as the colours are quite dark and may not be 
 | Link Background Color           | Dark Red               | ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
 | Button Hover Background Color   | White and Crimson      | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` and ![#CC4A4A](https://via.placeholder.com/15/CC4A4A/FFFFFF?text=+) `#CC4A4A` |
 | Input Border Color              | Crimson                | ![#CC4A4A](https://via.placeholder.com/15/CC4A4A/FFFFFF?text=+) `#CC4A4A` |
-| Review Button Background Color  | Purple                 | ![#5A0D7D](https://via.placeholder.com/15/5A0D7D/FFFFFF?text=+) `#5A0D7D` |
-| Review Button Hover Background Color | Light Purple        | ![#9B58BA](https://via.placeholder.com/15/9B58BA/FFFFFF?text=+) `#9B58BA` |
+| Review Button Background Color  | Dark Red                 | ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
+| Button Hover Background Color   | White and Crimson      | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` and ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
 | Modal Background Overlay        | Semi-transparent Black | ![rgba(0, 0, 0, 0.5)](https://via.placeholder.com/15/000000/FFFFFF?text=+) `rgba(0, 0, 0, 0.5)` |
 
 
