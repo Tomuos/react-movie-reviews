@@ -2,16 +2,13 @@
 
 Made in React, this project demonstrates a full-stack app using The Movie Database (TMDB) API for searching films and adding reviews for selected movies.
 
-
-## website overview
-
+## Website Overview
 
 ![Movie-review-db](/images/Movie-review-db.png)
 
 Currently, this is the landing page for the website. It lists the films by the most recent releases in the cinema. Users can search for a film and see the results.
 
-
-Colour pallette: may need changing as the colours are quite dark and may not be accessible for all users.
+Color palette: The current colors are quite dark and may not be accessible for all users. This might need to be changed for better accessibility.
 
 ### Color Palette Summary
 
@@ -24,12 +21,12 @@ Colour pallette: may need changing as the colours are quite dark and may not be 
 | Link Background Color           | Dark Red               | ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
 | Button Hover Background Color   | White and Crimson      | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` and ![#CC4A4A](https://via.placeholder.com/15/CC4A4A/FFFFFF?text=+) `#CC4A4A` |
 | Input Border Color              | Crimson                | ![#CC4A4A](https://via.placeholder.com/15/CC4A4A/FFFFFF?text=+) `#CC4A4A` |
-| Review Button Background Color  | Dark Red                 | ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
-| Button Hover Background Color   | White and Dark Red      | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` and ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
+| Review Button Background Color  | Dark Red               | ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
+| Review Button Hover Background Color | White and Dark Red | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` and ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
+| Highlight Color                 | Yellow                 | ![#FFEB3B](https://via.placeholder.com/15/FFEB3B/000000?text=+) `#FFEB3B` |
 | Modal Background Overlay        | Semi-transparent Black | ![rgba(0, 0, 0, 0.5)](https://via.placeholder.com/15/000000/FFFFFF?text=+) `rgba(0, 0, 0, 0.5)` |
 
-
-## Review view
+## Review View
 
 ![Fallguy-review](/images/Fallguy.png)
 
