@@ -25,7 +25,7 @@ Colour pallette: may need changing as the colours are quite dark and may not be 
 | Button Hover Background Color   | White and Crimson      | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` and ![#CC4A4A](https://via.placeholder.com/15/CC4A4A/FFFFFF?text=+) `#CC4A4A` |
 | Input Border Color              | Crimson                | ![#CC4A4A](https://via.placeholder.com/15/CC4A4A/FFFFFF?text=+) `#CC4A4A` |
 | Review Button Background Color  | Dark Red                 | ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
-| Button Hover Background Color   | White and Crimson      | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` and ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
+| Button Hover Background Color   | White and Dark Red      | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` and ![#921409](https://via.placeholder.com/15/921409/FFFFFF?text=+) `#921409` |
 | Modal Background Overlay        | Semi-transparent Black | ![rgba(0, 0, 0, 0.5)](https://via.placeholder.com/15/000000/FFFFFF?text=+) `rgba(0, 0, 0, 0.5)` |
 
 
